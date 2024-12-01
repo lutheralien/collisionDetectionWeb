@@ -1,0 +1,58 @@
+/* Video Processing Component Styles */
+.progress {
+    height: 25px;
+    
+    .progress-bar {
+      transition: width 0.6s ease;
+    }
+  }
+  
+  .video-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .btn-file-select {
+    position: relative;
+    overflow: hidden;
+    
+    input[type=file] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-width: 100%;
+      min-height: 100%;
+      font-size: 100px;
+      text-align: right;
+      filter: alpha(opacity=0);
+      opacity: 0;
+      outline: none;
+      background: white;
+      cursor: inherit;
+      display: block;
+    }
+  }
+  
+  // Additional custom styling for file info card
+  .card {
+    border-left: 4px solid #007bff;
+    
+    .card-body {
+      .row {
+        > div {
+          padding: 0.25rem 0.5rem;
+          
+          &:nth-child(odd) {
+            color: #6c757d;
+          }
+        }
+      }
+    }
+  }
+  
+  // Responsive video
+  @media (max-width: 768px) {
+    .ratio-16x9 {
+      max-height: 300px;
+    }
+  }

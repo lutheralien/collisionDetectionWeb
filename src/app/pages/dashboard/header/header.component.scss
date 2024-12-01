@@ -1,0 +1,130 @@
+// Variables
+$topbar-bg: #FFFFFF;
+$primary-yellow: #8B7355;  // Matching sidebar color
+$hover-color: rgba(139, 115, 85, 0.1);
+$icon-color: #705A3E;
+$border-color: #E0D5C1;
+$badge-color: #8B7355;
+
+.topbar {
+  background-color: $topbar-bg !important;
+  height: 64px;
+  padding: 0 1rem;
+  
+  // Common button styles
+  .mat-icon-button {
+    margin: 0 4px;
+    color: $icon-color;
+    
+    &:hover {
+      background-color: $hover-color;
+    }
+  }
+
+  // Badge styling
+  ::ng-deep {
+    .mat-badge-content {
+      background-color: $badge-color !important;
+      font-size: 10px;
+      height: 16px;
+      width: 16px;
+      line-height: 16px;
+    }
+
+    // Icon styling
+    .tabler-icon {
+      color: $icon-color;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  // Profile image
+  .rounded-circle {
+    border: 2px solid $primary-yellow;
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 0 2px rgba(139, 115, 85, 0.2);
+    }
+  }
+
+  .flex-1-auto {
+    flex: 1 1 auto;
+  }
+}
+
+// Profile menu styling
+.topbar-dd.cardWithShadow {
+  margin-top: 8px;
+  
+  ::ng-deep {
+    .mat-mdc-menu-content {
+      padding: 8px;
+    }
+
+    .mat-mdc-menu-item {
+      border-radius: 4px;
+      margin: 4px 0;
+      color: $icon-color;
+
+      &:hover {
+        background-color: $hover-color;
+      }
+
+      .mat-icon {
+        color: $icon-color;
+        margin-right: 8px;
+      }
+
+      .tabler-icon {
+        color: $icon-color;
+      }
+    }
+
+    // Logout button styling
+    .mat-stroked-button {
+      border-color: $primary-yellow;
+      color: $primary-yellow;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: $primary-yellow;
+        color: white;
+      }
+    }
+  }
+}
+
+// Custom utility classes
+.p-x-12 { padding: 0 12px; }
+.m-t-12 { margin-top: 12px; }
+.w-100 { width: 100%; }
+.d-flex { display: flex; }
+.align-items-center { align-items: center; }
+.object-cover { object-fit: cover; }
+
+// Icon size utilities
+.icon-18 { 
+  width: 18px; 
+  height: 18px;
+}
+.icon-20 { 
+  width: 20px; 
+  height: 20px;
+}
+
+// Mobile responsiveness
+@media (max-width: 768px) {
+  .topbar {
+    padding: 0 8px;
+    
+    .mat-icon-button {
+      margin: 0 2px;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+<!-- Conditional rendering for navigation caption -->
+<div *ngIf="item.navCap" mat-subheader class="nav-caption">
+  {{ item.navCap }}
+</div>
+
+<!-- Navigation item with conditional classes -->
+<a
+  mat-list-item
+  (click)="onItemSelected(item)"
+  [ngClass]="{
+    'activeMenu': item.route ? isActive(item.route) : false,
+    'active-accent': item.route ? isActive(item.route) : false
+  }"
+  class="menu-list-item"
+>
+  <i-tabler
+    class="routeIcon"
+    name="{{ item.iconName }}"
+    matListItemIcon
+  ></i-tabler>
+  <span class="hide-menu">{{ item.displayName }}</span>
+</a>
+<style>
+  .activeMenu {
+    background-color: #4F46E5 !important; /* Purple background */
+    color: white !important;
+  }
+
+  .active-accent {
+    border-left: 4px solid #DEB887 !important; /* Burlywood */
+}
+
+  /* Base styles for the menu item */
+  .menu-list-item {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  /* Icon and text styles */
+  .routeIcon {
+    margin-right: 8px;
+  }
+
+  .hide-menu {
+    margin-left: 8px;
+  }
+</style>

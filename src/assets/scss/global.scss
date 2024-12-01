@@ -1,0 +1,41 @@
+@mixin routed-component {
+    display: block;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(139, 115, 85, 0.1);
+    
+    // Common layout patterns
+    .content-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    // Common component styles
+    .section {
+      margin-bottom: 2rem;
+    }
+    
+    // Typography
+    h1, h2, h3 {
+      color: #8B7355;
+    }
+    
+    // Form styles
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    // Card styles
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    // Responsive styles
+    @media (max-width: 768px) {
+      padding: 15px;
+    }
+  }

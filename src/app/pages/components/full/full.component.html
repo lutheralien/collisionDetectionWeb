@@ -1,0 +1,132 @@
+<div class="dashboard-container p-4">
+  <h1 class="text-2xl font-bold mb-6">Questions Dashboard</h1>
+  
+  <!-- Summary Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+    <div class="bg-white rounded-lg shadow p-4">
+      <h2 class="text-lg font-semibold mb-2">Total Questions</h2>
+      <p class="text-3xl font-bold text-blue-600">{{ metrics?.total?.questions ?? 0 }}</p>
+    </div>
+
+    <div class="bg-white rounded-lg shadow p-4">
+      <h2 class="text-lg font-semibold mb-2">Pending Review</h2>
+      <p class="text-3xl font-bold text-yellow-500">{{ metrics?.total?.pending ?? 0 }}</p>
+    </div>
+
+    <div class="bg-white rounded-lg shadow p-4">
+      <h2 class="text-lg font-semibold mb-2">Approved</h2>
+      <p class="text-3xl font-bold text-green-500">{{ metrics?.total?.approved ?? 0 }}</p>
+    </div>
+
+    <div class="bg-white rounded-lg shadow p-4">
+      <h2 class="text-lg font-semibold mb-2">Rejected</h2>
+      <p class="text-3xl font-bold text-red-500">{{ metrics?.total?.rejected ?? 0 }}</p>
+    </div>
+  </div>
+
+  <!-- Charts Section -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-white rounded-lg shadow p-4">
+      <h2 class="text-lg font-semibold mb-4">Questions Distribution</h2>
+      <div class="h-64">
+        @if (metrics) {
+          <canvas baseChart
+            [data]="distributionChartData"
+            [options]="distributionChartOptions"
+            type="pie">
+          </canvas>
+        }
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow p-4">
+      <h2 class="text-lg font-semibold mb-4">Questions Timeline</h2>
+      <div class="h-64">
+        @if (metrics) {
+          <canvas baseChart
+            [data]="timelineChartData"
+            [options]="timelineChartOptions"
+            type="bar">
+          </canvas>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Review Stats -->
+  <div class="bg-white rounded-lg shadow p-4 mb-6">
+    <h2 class="text-lg font-semibold mb-4">Review Statistics</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div>
+        <p class="text-gray-600">Average Review Time</p>
+        <p class="text-xl font-semibold">{{ (metrics?.review?.averageReviewTime ?? 0) | number:'1.1-1' }} hours</p>
+      </div>
+      <div>
+        <p class="text-gray-600">Reviewed Last Week</p>
+        <p class="text-xl font-semibold">{{ metrics?.review?.reviewedLastWeek ?? 0 }}</p>
+      </div>
+      <div>
+        <p class="text-gray-600">Reviewed Last Month</p>
+        <p class="text-xl font-semibold">{{ metrics?.review?.reviewedLastMonth ?? 0 }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contributors Section -->
+  <div class="bg-white rounded-lg shadow p-4">
+    <h2 class="text-lg font-semibold mb-4">Top Contributors</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Most Active Reviewers -->
+      <div>
+        <h3 class="text-md font-semibold mb-3">Most Active Reviewers</h3>
+        <div class="space-y-2">
+          @if (metrics?.contributors?.mostActiveReviewers) {
+            @if ((metrics?.contributors?.mostActiveReviewers?.length ?? 0) > 0) {
+              @for (reviewer of metrics?.contributors?.mostActiveReviewers; track reviewer.id) {
+                @if (reviewer) {
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <p class="font-medium">{{ reviewer.name || 'Unknown' }}</p>
+                      <p class="text-sm text-gray-500">{{ reviewer.email || 'No email' }}</p>
+                    </div>
+                    <span class="font-semibold">{{ reviewer.count || 0 }} reviews</span>
+                  </div>
+                }
+              }
+            } @else {
+              <p class="text-gray-500">No active reviewers</p>
+            }
+          } @else {
+            <p class="text-gray-500">Loading reviewers...</p>
+          }
+        </div>
+      </div>
+  
+      <!-- Top Uploaders -->
+<div>
+  <h3 class="text-md font-semibold mb-3">Top Uploaders</h3>
+  <div class="space-y-2">
+    @if (metrics?.contributors?.topUploaders) {
+      @if ((metrics?.contributors?.topUploaders?.length ?? 0) > 0) {
+        @for (uploader of metrics?.contributors?.topUploaders; track uploader.id) {
+          @if (uploader && uploader.id) {
+            <div class="flex justify-between items-center">
+              <div>
+                <p class="font-medium">{{ uploader.name }}</p>
+                <p class="text-sm text-gray-500">{{ uploader.email }}</p>
+              </div>
+              <span class="font-semibold">{{ uploader.count || 0 }} uploads</span>
+            </div>
+          }
+        }
+      } @else {
+        <p class="text-gray-500">No uploaders yet</p>
+      }
+    } @else {
+      <p class="text-gray-500">Loading uploaders...</p>
+    }
+  </div>
+</div>
+    </div>
+  </div>
+</div>

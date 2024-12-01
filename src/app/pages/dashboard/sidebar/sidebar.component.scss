@@ -1,0 +1,97 @@
+// Variables
+$primary: #4F46E5;
+$accent: #818CF8;
+$active: #6366F1;
+$border-color: rgba(255, 255, 255, 0.1);
+
+// Light Theme Colors
+$background-light: #F8FAFC;
+$surface-light: #FFFFFF;
+$text-light: #1E293B;
+
+// Dark Theme Colors
+$background-dark: #1E293B;
+$surface-dark: #0F172A;
+$text-dark: #F8FAFC;
+
+.flex-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: $surface-dark;
+  color: $text-dark;
+  box-shadow: 4px 0 8px rgba(0, 0, 0, 0.1);
+
+  [data-theme="light"] & {
+    background-color: $surface-light;
+    color: $text-light;
+    box-shadow: 4px 0 8px rgba(0, 0, 0, 0.05);
+  }
+}
+
+.sidebar-list {
+  padding: 0;
+  
+  ::ng-deep {
+    .mat-mdc-list-item {
+      color: $text-dark !important;
+      border-left: 3px solid transparent;
+      transition: all 0.3s ease;
+      
+      [data-theme="light"] & {
+        color: $text-light !important;
+      }
+      
+      &:hover {
+        background-color: rgba($primary, 0.1) !important;
+        border-left: 3px solid rgba($primary, 0.3);
+
+        [data-theme="light"] & {
+          background-color: rgba($primary, 0.05) !important;
+        }
+      }
+      
+      &.active {
+        background-color: rgba($primary, 0.2) !important;
+        border-left: 3px solid $primary;
+        
+        [data-theme="light"] & {
+          background-color: rgba($primary, 0.1) !important;
+        }
+
+        .mdc-list-item__primary-text,
+        .mat-icon {
+          color: $primary !important;
+        }
+      }
+    }
+
+    .mdc-list-item__primary-text {
+      color: $text-dark !important;
+      font-weight: 500;
+
+      [data-theme="light"] & {
+        color: $text-light !important;
+      }
+    }
+
+    .mat-icon {
+      color: rgba($text-dark, 0.9) !important;
+
+      [data-theme="light"] & {
+        color: rgba($text-light, 0.9) !important;
+      }
+    }
+  }
+}
+
+app-branding {
+  padding: 16px;
+  background-color: darken($surface-dark, 5%);
+  border-bottom: 1px solid $border-color;
+
+  [data-theme="light"] & {
+    background-color: $surface-light;
+    border-bottom: 1px solid rgba($text-light, 0.1);
+  }
+}

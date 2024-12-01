@@ -1,0 +1,230 @@
+// Variables
+$primary: #4F46E5;
+$accent: #818CF8;
+$text-dark: #1E293B;
+$text-light: #F8FAFC;
+$secondary-text-dark: #64748B;
+$secondary-text-light: #94A3B8;
+$background-light: #F8FAFC;
+$background-dark: #1E293B;
+$card-light: #FFFFFF;
+$card-dark: #0F172A;
+$border-light: #E2E8F0;
+$border-dark: #334155;
+$error: #EF4444;
+
+// Background and container styles
+.blank-layout-container {
+  min-height: 100vh;
+  position: relative;
+}
+
+.bg-light-primary {
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($background-light, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 0;
+  }
+
+  [data-theme="dark"] & {
+    &::before {
+      background-color: rgba($background-dark, 0.8);
+    }
+  }
+}
+
+.bg-gredient {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+// Card styles
+.cardWithShadow {
+  background: rgba($card-light, 0.9) !important;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 8px;
+
+  [data-theme="dark"] & {
+    background: rgba($card-dark, 0.9) !important;
+  }
+
+  .mat-card-content {
+    position: relative;
+  }
+}
+
+.boxed-auth {
+  width: 100%;
+  max-width: 400px;
+}
+
+// Form styles
+.mat-form-field {
+  width: 100%;
+  
+  &.mat-focused {
+    .mat-form-field-outline {
+      color: $primary !important;
+    }
+    .mat-form-field-label {
+      color: $primary !important;
+    }
+  }
+
+  [data-theme="dark"] & {
+    .mat-form-field-label {
+      color: $text-light !important;
+    }
+  }
+}
+
+// Custom classes
+.f-s-14 { font-size: 14px; }
+.f-w-600 { font-weight: 600; }
+.m-t-30 { margin-top: 30px; }
+.m-b-12 { margin-bottom: 12px; }
+.m-l-auto { margin-left: auto; }
+.p-32 { padding: 32px; }
+.w-48 { width: 48%; }
+
+// Or border style
+.or-border {
+  position: relative;
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+  color: $text-dark;
+
+  [data-theme="dark"] & {
+    color: $text-light;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    height: 1px;
+    background-color: $border-light;
+
+    [data-theme="dark"] & {
+      background-color: $border-dark;
+    }
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+  }
+}
+
+// Updated Button styles
+.admin-btn {
+  background-color: $primary !important;
+  color: $text-light !important;
+  height: 45px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none !important;
+  
+  &:hover {
+    background-color: $accent !important;
+    box-shadow: 0 4px 8px rgba($primary, 0.3);
+  }
+
+  &:disabled {
+    background-color: rgba($secondary-text-dark, 0.12) !important;
+    color: rgba($secondary-text-dark, 0.26) !important;
+    cursor: not-allowed;
+    box-shadow: none !important;
+    opacity: 0.6;
+  }
+}
+
+.shop-btn {
+  background-color: $accent !important;
+  color: $text-light !important;
+  height: 45px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none !important;
+
+  &:hover {
+    background-color: darken($accent, 10%) !important;
+    box-shadow: 0 4px 8px rgba($accent, 0.3);
+  }
+
+  &:disabled {
+    background-color: rgba($secondary-text-dark, 0.12) !important;
+    color: rgba($secondary-text-dark, 0.26) !important;
+    cursor: not-allowed;
+    box-shadow: none !important;
+    opacity: 0.6;
+  }
+}
+
+// Checkbox styles
+.mat-checkbox {
+  .mat-checkbox-frame {
+    border-color: $secondary-text-dark;
+
+    [data-theme="dark"] & {
+      border-color: $secondary-text-light;
+    }
+  }
+
+  &.mat-checkbox-checked {
+    .mat-checkbox-background {
+      background-color: $primary !important;
+    }
+    .mat-checkbox-checkmark-path {
+      stroke: $text-light !important;
+    }
+  }
+}
+
+// Links
+a.text-primary {
+  color: $primary !important;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $accent !important;
+  }
+
+  [data-theme="dark"] & {
+    color: $accent !important;
+    
+    &:hover {
+      color: lighten($accent, 10%) !important;
+    }
+  }
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+  .cardWithShadow {
+    margin: 1rem;
+  }
+
+  .p-32 {
+    padding: 20px;
+  }
+}

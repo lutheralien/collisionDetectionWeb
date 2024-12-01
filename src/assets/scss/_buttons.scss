@@ -1,0 +1,31 @@
+@import 'variables';
+
+@mixin button-styles {
+  .mat-flat-button, 
+  .mat-raised-button, 
+  .mat-button {
+    background-color: $golden-color !important;
+    color: $text-dark !important;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: $golden-hover !important;
+      box-shadow: 0 4px 8px $golden-shadow;
+    }
+
+    &:disabled {
+      background-color: rgba($golden-color, 0.4) !important;
+      color: rgba($text-dark, 0.4) !important;
+    }
+  }
+
+  .action-buttons {
+    margin-top: $margin-base;
+    display: flex;
+    gap: $margin-base;
+
+    @media (max-width: $mobile-width) {
+      flex-direction: column;
+    }
+  }
+}

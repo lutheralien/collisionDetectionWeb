@@ -1,0 +1,65 @@
+@import 'variables';
+
+@mixin table-styles {
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: $margin-base 0;
+
+    th {
+      background-color: $golden-color;
+      color: $text-dark;
+      font-weight: 600;
+      padding: 12px;
+      text-align: left;
+      border-bottom: 2px solid darken($golden-color, 10%);
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid rgba($golden-color, 0.2);
+    }
+
+    tbody {
+      tr:hover {
+        background-color: rgba($golden-color, 0.05);
+      }
+
+      tr:nth-child(even) {
+        background-color: rgba($golden-color, 0.02);
+      }
+    }
+  }
+
+  .table-container {
+    overflow-x: auto;
+    margin: $margin-base 0;
+    border-radius: $border-radius;
+    box-shadow: 0 2px 4px rgba($golden-color, 0.1);
+  }
+
+  // Material table styles
+  .mat-mdc-table {
+    width: 100%;
+    background: transparent;
+
+    .mat-mdc-header-cell {
+      background-color: $golden-color;
+      color: $text-dark;
+      font-weight: 600;
+    }
+
+    .mat-mdc-row:hover {
+      background-color: rgba($golden-color, 0.05);
+    }
+  }
+
+  .mat-mdc-paginator {
+    background: transparent;
+
+    .mat-mdc-paginator-navigation-button {
+      color: $golden-color;
+    }
+  }
+}
